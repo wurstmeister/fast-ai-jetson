@@ -16,10 +16,14 @@ RUN pip3 install graphviz spacy
 RUN apt-get update && apt-get -y install graphviz 
 # https://github.com/ipython/ipython/issues/12740
 RUN pip install jedi==0.17.2
-RUN pip install --no-deps fastai==1.0.61
+RUN pip install fastai==1.0.61
 # https://github.com/klausharbo/clojupyter-docker/blob/master/clojupyter/Dockerfile
 
-
+RUN pip3 install git+https://github.com/ekaschalk/jedhy.git
+RUN pip3 install git+https://github.com/Calysto/calysto_hy.git
+RUN python3 -m calysto_hy install
+RUN apt-get update && apt-get install -y python3-tk
+RUN pip3 install fire
 #RUN apt-get update && apt-get install -y curl openjdk-8-jdk clojure
 #RUN apt-get update && apt-get install rlwrap
 #RUN curl -O https://download.clojure.org/install/linux-install-1.10.2.774.sh && chmod +x linux-install-1.10.2.774.sh
